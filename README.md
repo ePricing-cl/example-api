@@ -1,5 +1,7 @@
 # Integración de ejemplo con la API interna de ePricing
 
+> Para documentación de integración más formal y orientada a API, revisar [GUIA_INTEGRACION_API.md](GUIA_INTEGRACION_API.md).
+
 Este proyecto entrega un ejemplo mínimo de consumo de la API interna de ePricing usando autenticación OAuth2 con `client_credentials`.
 
 El objetivo es que el equipo técnico del cliente pueda:

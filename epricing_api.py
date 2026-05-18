@@ -32,21 +32,13 @@ def test_api_epricing_download():
     # Payload de ejemplo, ajusta según tus necesidades
     payload = {
         "report_type": "prices",
-        "type_date": "day",  # 
-        "dates_ranges": [{"start_date": "2026-04-01", "end_date": "2026-04-30"}],
+        "type_date": "day",  # week, month
+        "dates_ranges": [{"start_date": "2026-04-01", "end_date": "2026-04-01"}],
         "filters": [
             {
                 "key": "chain",
-                "data_type": "STRING",
-                "filter_type": "chain_filter",
-                "values": ["Ahumada", "Cruz Verde", "Salcobrand", "Ligafarmacia", "Cofar"],
-            }
-            # {
-            #     "key": "fabricante",
-            #     "data_type": "STRING",
-            #     "filter_type": "product_attribute",
-            #     "values": ["Sophia"],
-            # }
+                "values": ["Ahumada", "Cruz-Verde", "Salcobrand", "Ligafarmacia", "Cofar", "Dr-Simi", "Ecofarmacias-Cl", "Farmex"],
+            },
         ],
     }
     r_api = requests.post(EPRICING_API_URL, json=payload, headers=headers)

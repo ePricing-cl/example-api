@@ -114,8 +114,6 @@ Ejemplo simplificado:
 	"filters": [
 		{
 			"key": "chain",
-			"data_type": "STRING",
-			"filter_type": "chain_filter",
 			"values": ["Ahumada", "Cruz Verde"]
 		}
 	]
@@ -147,27 +145,27 @@ El sistema valida la coherencia entre el rango de fechas y el tipo de agrupació
 
 ### Guía detallada de filtros
 
-El parámetro `filters` acepta una lista de objetos. Cada objeto define un criterio de filtrado mediante las propiedades `key`, `data_type`, `filter_type` y `values`.
+El parámetro `filters` acepta una lista de objetos. Cada objeto define un criterio de filtrado mediante las propiedades `key` y `values`.
+
+Los campos `filter_type` y `data_type` ya no deben enviarse desde el cliente. El backend los infiere automáticamente en base a la configuración de atributos.
 
 Estructura general:
 
 ```json
 {
 	"key": "chain",
-	"data_type": "STRING",
-	"filter_type": "chain_filter",
 	"values": ["Ahumada", "Cruz Verde"]
 }
 ```
 
 ### Filtros de estructura (base)
 
-- `market` con `filter_type: market_filter`: segmento de mercado específico.
+- `market`: segmento de mercado específico.
 	- Ejemplo: `["Aciclovir Jarabe 200 (100)"]`
-- `chain` con `filter_type: chain_filter`: cadenas de retail o farmacias.
+- `chain`: cadenas de retail o farmacias.
 	- Ejemplo: `["Ahumada", "Cruz Verde"]`
 
-### Atributos de producto (`product_attribute`)
+### Atributos de producto
 
 Estos filtros permiten granular la búsqueda según características técnicas del catálogo.
 
@@ -189,10 +187,8 @@ Estos filtros permiten granular la búsqueda según características técnicas d
 	- Ejemplo: `["ml", "Ampolla", "Comp"]`
 - `codigo-ims`: código de auditoría farmacéutica.
 	- Ejemplo: `["0535820"]`
-- `descripcion-producto-homologado`: nombre específico estandarizado.
+	- `descripcion-producto-homologado`: nombre específico estandarizado.
 	- Ejemplo: `["Abrilar Jbe. x 100 ml"]`
-
-Cuando se usen atributos de producto, el `filter_type` esperado es `product_attribute`.
 
 En el ejemplo incluido se usa un filtro por cadena (`chain`) con los siguientes valores:
 
